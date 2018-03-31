@@ -18,3 +18,4 @@ PUDUI is a django web application reunite patients, doctors, and the insurance c
 
 The patient will want to use this service because it provides them with a convienient method of communicating with their doctor and their insurance company. They will not have to wait on a phone, take time off from work, sit in a waiting room just until the assistant guides them to the exam room, where the doctor will do a few tests and probably say, 'Get some rest, take some cough medicine, drink a lot of water.' Why waste this time when the entire transaction of communication can be started (and potentially ended) online. 
 
+* Running production server ```uwsgi --http :8000 --module PUDUI.wsgi```*
