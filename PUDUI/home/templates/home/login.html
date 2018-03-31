@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% block title %}
+PUDUI Login
+{% endblock %}
+{% block container %}
+<h1>Login Here</h1>
+<form method='POST'>
+{% csrf_token %}
+{{ form.as_p }}
+<button type='submit'>Login</button>
+</form>
+{% endblock %}
