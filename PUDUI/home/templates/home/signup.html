@@ -1,20 +1,16 @@
 {% extends 'home/base.html' %}
-{% block title %}
-PUDUI Login
-{% endblock %}
+{% block title %}Signup{% endblock %}
 {% block container %}
-
 <div class="card">
   <div class="card-header">
-    Login
+    Sign Up
   </div>
   <div class="card-body">
-    <form method='POST'>
+    <form style='text-align:justify' method='POST'>
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
   </div>
 </div>
-
 {% endblock %}
