@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+{% block title %}Search Results{% endblock %}
+{% block container %}
+<nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link" href="index">Dash</a>
+  <a class="nav-item nav-link" href="searchdoc">Doctor Search</a>
+  <a class="nav-item nav-link" href="createappointment">Make Appointment</a>
+  <a class="nav-item nav-link" href="createhealthinstance">Create Health Instance</a>
+  <a class="nav-item nav-link" href="createcommunicationpatient">Send Message</a>
+  <a class="nav-item nav-link" href="viewchat">View Chat</a>
+  <a class="nav-item nav-link" href="seehealthrecords">Previous Health Records</a>
+</nav>
+<div class="row" style="padding:15px;">
+{% for doctor in doctors %}
+<div class="card" style="width: 18rem;text-align:center;display:block;padding:15px;">
+  <div class="card-header">
+    {{ doctor.user.first_name }} {{doctor.user.last_name}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{ doctor.doctor_type }}</li>
+    <li class="list-group-item">{{ doctor.zip_code }}</li>
+  </ul>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

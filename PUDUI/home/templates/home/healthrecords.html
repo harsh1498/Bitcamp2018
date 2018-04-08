@@ -1,0 +1,30 @@
+{% extends 'home/base.html' %}
+{% block title %}Heath Records{% endblock %}
+{% block container %}
+<nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link" href="index">Dash</a>
+  <a class="nav-item nav-link" href="searchdoc">Doctor Search</a>
+  <a class="nav-item nav-link" href="createappointment">Make Appointment</a>
+  <a class="nav-item nav-link" href="createhealthinstance">Create Health Instance</a>
+  <a class="nav-item nav-link" href="createcommunicationpatient">Send Message</a>
+  <a class="nav-item nav-link" href="viewchat">View Chat</a>
+  <a class="nav-item nav-link" href="seehealthrecords">Previous Health Records</a>
+</nav>
+<div class="row" style="padding:10px;">
+{% for instance in health_instance %}
+<div class="card" style="width: 18rem;padding:10px;margin:10px;">
+  <div class="card-body">
+    <h5 class="card-title">{{instance.common_name}}</h5>
+    <h7>Description:</h7>
+    <p class="card-text">{{instance.description}}</p>
+  </div>
+  <h7>Symptoms</h7>
+  <ul class="list-group list-group-flush">
+    {% for attr in instance.health_attr.all %}
+    <li class="list-group-item">{{attr.key}} : {{attr.value}}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

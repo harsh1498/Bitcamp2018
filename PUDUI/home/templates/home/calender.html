@@ -1,0 +1,41 @@
+<style>
+div.appointment-wrapper {
+  display:flex;
+  justify-content: center; flex-direction: column;
+}
+div.appointment {
+  background-color: lightblue;
+  color:black;
+  border: 1px black solid;
+  width: 50%;
+  height: 120px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+
+  display: flex; align-items:center; flex-direction:row; justify-content:center;
+}
+
+</style>
+
+{% extends 'home/base.html' %}
+{% block title %} Send Message {% endblock %}
+{% block container %}
+<nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link" href="index">Dash</a>
+    <a class="nav-item nav-link" href="Calender">Calender</a>
+  <a class="nav-item nav-link" href="createcommunicationdoctor">Send Message</a>
+  <a class="nav-item nav-link" href="viewdocchat">View Chat</a>
+</nav>
+
+<div class="list-group">
+  {% for i,j in datetime %}
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{i}}</h5>
+      <small class="text-muted">{{j}}</small>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+{% endblock %}

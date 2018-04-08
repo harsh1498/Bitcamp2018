@@ -1,0 +1,20 @@
+{% extends 'home/base.html' %}
+{% block title %} Create Appointment {% endblock %}
+{% block container %}
+<nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link" href="index">Dash</a>
+  <a class="nav-item nav-link" href="searchdoc">Doctor Search</a>
+  <a class="nav-item nav-link" href="createappointment">Make Appointment</a>
+  <a class="nav-item nav-link" href="createhealthinstance">Create Health Instance</a>
+  <a class="nav-item nav-link" href="createcommunicationdoctor">Send Message</a>
+  <a class="nav-item nav-link" href="viewdocchat">View Chat</a>
+</nav>
+<div class="card">
+  <h1 style="text-align:center;">Create Appointment</h1>
+  <form style="padding:50px;margin-left:25%;" method='POST'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Make</button>
+  </form>
+</div>
+{% endblock %}

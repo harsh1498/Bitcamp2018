@@ -1,0 +1,18 @@
+{% extends 'home/base.html' %}
+{% block title %} Send Message {% endblock %}
+{% block container %}
+<nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link" href="index">Dash</a>
+  <a class="nav-item nav-link" href="calender">Calender</a>
+  <a class="nav-item nav-link" href="createcommunicationdoctor">Send Message</a>
+  <a class="nav-item nav-link" href="viewdocchat">View Chat</a>
+</nav>
+<div class="card">
+  <h1 style="text-align:center;">Send Message</h1>
+  <form style="padding:50px;margin-left:25%;" method='POST'>
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Send Message</button>
+  </form>
+</div>
+{% endblock %}

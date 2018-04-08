@@ -1,0 +1,24 @@
+{% extends 'home/base.html' %}
+{% block title %}Heath Records{% endblock %}
+{% block container %}
+<nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link" href="index">Dash</a>
+  <a class="nav-item nav-link" href="searchdoc">Calender</a>
+  <a class="nav-item nav-link" href="patients">Patients</a>
+  <a class="nav-item nav-link" href="createhealthinstance">Create Health Instance</a>
+  <a class="nav-item nav-link" href="createcommunicationpatient">Send Message</a>
+  <a class="nav-item nav-link" href="viewchat">View Chat</a>
+</nav>
+
+{% for patient in patients %}
+<div class="card" style="width: 18rem;text-align:center;display:block">
+  <div class="card-header">
+    {{ patient.user.first_name }} {{patient.user.last_name}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{ patient.doctor_type }}</li>
+    <li class="list-group-item">{{ doctor.zip_code }}</li>
+  </ul>
+</div>
+{% endfor %}
+{% endblock %}

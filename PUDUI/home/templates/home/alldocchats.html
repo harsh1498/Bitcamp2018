@@ -1,0 +1,26 @@
+{% extends 'home/base.html' %}
+{% block title %} Send Message {% endblock %}
+{% block container %}
+<nav class="nav nav-pills nav-justified">
+  <a class="nav-item nav-link" href="index">Dash</a>
+  <a class="nav-item nav-link" href="calender">Calender</a>
+  <a class="nav-item nav-link" href="createcommunicationdoctor">Send Message</a>
+  <a class="nav-item nav-link" href="viewdocchat">View Chat</a>
+</nav>
+<div style="background-color:white;">
+<h1 style="text-align:center;">Chat History</h1>
+{% for conversation in conversations %}
+{% if conversation.is_patient %}
+Sender : {{conversation.patient.user.first_name}}
+{% endif %}
+{% if conversation.is_patient == False %}
+{{conversation.doctor.user.first_name}}
+{% endif %}
+<div class="card">
+  <h4>{{conversation.message}}</h4>
+  <h6>Time Sent : {{conversation.timestamp}}</h6>
+
+</div>
+{% endfor %}
+</div>
+{% endblock %}
