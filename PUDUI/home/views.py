@@ -98,7 +98,7 @@ def create_communication_patient(request):
     else:
         form = CreateCommunicationPatientForm()
 
-    return render(request, 'home/createhealthinstance.html', {'form':form})
+    return render(request, 'home/createcommunicationpatient.html', {'form':form})
 
 def create_communication_doctor(request):
     if request.method == 'POST':
@@ -113,7 +113,7 @@ def create_communication_doctor(request):
     else:
         form = CreateCommunicationDoctorForm()
 
-    return render(request, 'home/createhealthinstance.html', {'form':form})
+    return render(request, 'home/createcommunicationdoctor.html', {'form':form})
 
 def create_appointment(request):
     if request.method == 'POST':
@@ -124,7 +124,7 @@ def create_appointment(request):
     else:
         form = CreateAppointment()
 
-    return render(request, 'home/createhealthinstance.html', {'form':form})
+    return render(request, 'home/createappointment.html', {'form':form})
 
 def search_doc(request):
     if request.method == 'POST':
