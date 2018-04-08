@@ -28,10 +28,11 @@ div.appointment {
 </nav>
 
 <div class="list-group">
-  {% for i,j in datetime %}
+  {% for i,j,k in datetime %}
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{i}}</h5>
+      <h4>{{k}}</h4>
       <small class="text-muted">{{j}}</small>
     </div>
   </a>

@@ -12,7 +12,7 @@ def calender(request):
     datetime = []
     for i in range(len(doctor_appointments)):
         date, time = str(doctor_appointments[i].appointment_time).split(' ')
-        datetime.append((date,time))
+        datetime.append((date,time,doctor_appointments[i].patient))
 
     context['datetime'] = datetime
     return render(request, 'home/calender.html', context)
@@ -119,7 +119,9 @@ def create_appointment(request):
     if request.method == 'POST':
         form = CreateAppointment(request.POST)
         if form.is_valid():
-            form.save()
+            app = form.save(commit=False)
+            app.patient = patient.objects.get(user=request.user)
+            app.save()
             return redirect(index)
     else:
         form = CreateAppointment()
@@ -150,7 +152,9 @@ def create_health_instance(request):
     if request.method == 'POST':
         form = CreateHealthInstanceForm(request.POST)
         if form.is_valid():
-            form.save()
+            inst = form.save(commit=False)
+            inst.patient = patient.objects.get(user=request.user)
+            inst.save()
             return redirect(index)
     else:
         form = CreateHealthInstanceForm()
