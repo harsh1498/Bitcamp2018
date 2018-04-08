@@ -1,5 +1,5 @@
 {% extends 'home/base.html' %}
-{% block title %} Create health instance {% endblock %}
+{% block title %} Report Health Issue {% endblock %}
 {% block container %}
 <nav class="nav nav-pills nav-justified">
   <a class="nav-item nav-link" href="index">Dash</a>
@@ -11,8 +11,8 @@
   <a class="nav-item nav-link" href="seehealthrecords">Previous Health Records</a>
 </nav>
 <div class="card">
-  <h1>Create health instance</h1>
-  <form method='POST'>
+  <h1 style="text-align:center;">Report Health Issue</h1>
+  <form style="padding:50px;margin-left:25%;" method='POST'>
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" class="btn btn-primary">Make</button>

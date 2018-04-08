@@ -10,8 +10,8 @@
   <a class="nav-item nav-link" href="viewdocchat">View Chat</a>
 </nav>
 <div class="card">
-  <h1>Create Appointment</h1>
-  <form method='POST'>
+  <h1 style="text-align:center;">Create Appointment</h1>
+  <form style="padding:50px;margin-left:25%;" method='POST'>
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" class="btn btn-primary">Make</button>

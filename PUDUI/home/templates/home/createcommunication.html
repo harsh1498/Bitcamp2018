@@ -11,8 +11,8 @@
   <a class="nav-item nav-link" href="seehealthrecords">Previous Health Records</a>
 </nav>
 <div class="card">
-  <h1>Send Message</h1>
-  <form method='POST'>
+  <h1 style="text-align:center;">Send Message</h1>
+  <form style="padding:50px;margin-left:25%;" method='POST'>
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" class="btn btn-primary">Send Message</button>

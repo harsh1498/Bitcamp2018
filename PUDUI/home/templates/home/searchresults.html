@@ -10,9 +10,9 @@
   <a class="nav-item nav-link" href="viewchat">View Chat</a>
   <a class="nav-item nav-link" href="seehealthrecords">Previous Health Records</a>
 </nav>
-
+<div class="row" style="padding:15px;">
 {% for doctor in doctors %}
-<div class="card" style="width: 18rem;text-align:center;display:block">
+<div class="card" style="width: 18rem;text-align:center;display:block;padding:15px;">
   <div class="card-header">
     {{ doctor.user.first_name }} {{doctor.user.last_name}}
   </div>
@@ -22,4 +22,5 @@
   </ul>
 </div>
 {% endfor %}
+</div>
 {% endblock %}

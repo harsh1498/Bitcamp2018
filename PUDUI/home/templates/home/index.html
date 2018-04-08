@@ -34,7 +34,7 @@ PUDUI HOME
           <a href="#" class="list-group-item list-group-item-action">{{prescription.name}} : {{prescription.dosage}}</a>
           {% endfor %}
         </div>
-        <a href="createhealthinstance" class="btn btn-primary">Report a Health Issue</a>
+        <a href="createhealthinstance" style="margin-top:15px;text-align:center;" class="btn btn-primary">Report a Health Issue</a>
       </div>
     </div>
   </div>
@@ -49,17 +49,60 @@ PUDUI HOME
   <a class="nav-item nav-link" href="viewdocchat">View Chat</a>
 </nav>
 
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Calender</h5>
+        <p class="card-text">Stay on top of your appointments using the calender feature</p>
+        <a href="calender" class="btn btn-primary">Goto my Calender</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">View Chats</h5>
+        <p class="card-text">Get a better sense of your patients by chatting with them</p>
+        <a href="viewdocchat" class="btn btn-primary">View Chat History</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endif %}
 
 {% if type == 'insurance' %}
-The patient:
- {{patient}}
-The Doctors:
- {{doctors}}
-The Insurances:
- {{insurances}}
-The Health Records:
- {{data}}
-
+<h1 style="color:white;text-align:center;">List of All Patients</h1>
+{% for pati in patients %}
+<div class="list-group" style="background-color:white;">
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h4 class="mb-1"> <strong> <u> {{pati.user.first_name}}, {{pati.user.last_name}} </u> </strong> </h4>
+    </div>
+    <h7><strong><u>The Doctors:</u></strong></h7>
+     {% for doc in pati.doctors.all %}
+     <p>
+     {{doc.user.first_name}} {{doc.user.last_name}}
+     </p>
+     {% endfor %}
+   <h7><strong><u>The Insurances:</u><strong></h7>
+     {% for ins in pati.insurances.all %}
+     <p>
+     {{ins.user.first_name}} {{ins.user.last_name}}
+     </p>
+     {% endfor %}
+   <h7><strong><u>The Health Records:</u></strong></h7>
+     {% for p in data %}
+     {% for j in p %}
+     {% for i in j %}
+     <p>
+     {{i}}
+     </p>
+     {% endfor %}
+     {% endfor %}
+     {% endfor %}
+  </a>
+</div>
+{% endfor %}
 {% endif %}
 {% endblock %}
