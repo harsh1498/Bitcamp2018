@@ -52,11 +52,13 @@ PUDUI HOME
 {% endif %}
 
 {% if type == 'insurance' %}
-{% for patient in patients %}
-{{patient.user.first_name}} {{patient.user.last_name}}
-{% for doc in patient.doctor %}
-{{doc.user.first_name}} {{doc.user.last_name}}
-{% endfor %}
-{% endfor %}
+{% for d in data %}
+ {% for r in d %}
+ {{r}}
+ {% for j in r %}
+ {{j}}
+ {% endfor %}
+ {% endfor %}
+ {% endfor %}
 {% endif %}
 {% endblock %}
