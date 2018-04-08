@@ -1,20 +1,21 @@
 {% extends 'home/base.html' %}
-{% block title %} Create Appointment {% endblock %}
+{% block title %} Update Doctor {% endblock %}
 {% block container %}
 <nav class="nav nav-pills nav-justified">
   <a class="nav-item nav-link" href="index">Dash</a>
   <a class="nav-item nav-link" href="searchdoc">Doctor Search</a>
   <a class="nav-item nav-link" href="createappointment">Make Appointment</a>
   <a class="nav-item nav-link" href="createhealthinstance">Create Health Instance</a>
-  <a class="nav-item nav-link" href="createcommunicationdoctor">Send Message</a>
-  <a class="nav-item nav-link" href="viewdocchat">View Chat</a>
+  <a class="nav-item nav-link" href="createcommunicationpatient">Send Message</a>
+  <a class="nav-item nav-link" href="viewchat">View Chat</a>
+  <a class="nav-item nav-link" href="seehealthrecords">Previous Health Records</a>
 </nav>
 <div class="card">
-  <h1>Create Appointment</h1>
+  <h1>Update Doctor</h1>
   <form method='POST'>
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">Make</button>
+  <button type="submit" value='Update' class="btn btn-primary">Send Message</button>
   </form>
 </div>
 {% endblock %}

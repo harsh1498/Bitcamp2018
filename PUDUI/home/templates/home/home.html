@@ -1,16 +1,60 @@
+<style>
+.wrapper{
+  display: grid;
+  grid-auto-columns: repeat(3,1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px,auto);
+}
+
+.header{
+  grid-column: 1/4;
+  grid-row: 2 ;
+}
+
+.subCat{
+  grid-column: 2;
+  grid-row: 1
+}
+</style>
+
 {% extends 'home/base.html' %}
 {% block title %}
 PUDUI
 {% endblock %}
 {% block container %}
-<div class="jumbotron" style='text-align:center'>
-  <h1 class="display-4">PUDUI</h1>
+<div class="jumbotron" style='text-align:center;background-color:#0097A7;padding-top:0;padding-bottom:100px;color:white;'>
+  <h1 class="display-4" style="padding-top:20px">PUDUI</h1>
   <p class="lead">Patient Union Doctor Union Insurance</p>
   <hr class="my-4">
   <p>We attempt to reunite the healthcare industry, we bring the major entities closer onto one convinent platform</p>
   <p class="lead">
-  <a class="btn btn-light btn-lg" href="/login" role="button">Login</a>
-  <a class="btn btn-primary btn-lg" href="/signup" role="button">Sign Up</a>
+    <a style='text-align:right' class="btn btn-light btn-lg" href="/login" role="button">Login</a>
+    <a style='text-align:right' class="btn btn-primary btn-lg" href="/signup" role="button">Sign Up</a>
 </p>
 </div>
+
+<div class="">
+  <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header">Header</div>
+    <div class="card-body">
+      <h5 class="card-title">Info card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header">Header</div>
+    <div class="card-body">
+      <h5 class="card-title">Info card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+    <div class="card-header">Header</div>
+    <div class="card-body">
+      <h5 class="card-title">Info card title</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+</div>
+
 {% endblock %}

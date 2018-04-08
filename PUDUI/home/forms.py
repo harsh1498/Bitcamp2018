@@ -26,6 +26,11 @@ class CreateCommunicationPatientForm(ModelForm):
         model = communication
         fields = ['message','health_instance']
 
+class CreateCommunicationDoctorForm(ModelForm):
+    class Meta:
+        model = communication
+        fields = ['message','health_instance']
+
 class CreateAppointment(ModelForm):
     class Meta:
         model = doctor_appointment

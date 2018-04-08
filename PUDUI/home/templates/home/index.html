@@ -44,12 +44,19 @@ PUDUI HOME
 {% if type == 'doctor' %}
 <nav class="nav nav-pills nav-justified">
   <a class="nav-item nav-link" href="index">Dash</a>
-  <a class="nav-item nav-link" href="searchdoc">Calender</a>
-  <a class="nav-item nav-link" href="createappointment">Patients</a>
-  <a class="nav-item nav-link" href="createhealthinstance">Create Health Instance</a>
-  <a class="nav-item nav-link" href="createcommunicationpatient">Send Message</a>
+  <a class="nav-item nav-link" href="calender">Calender</a>
+  <a class="nav-item nav-link" href="createcommunicationdoctor">Send Message</a>
   <a class="nav-item nav-link" href="viewchat">View Chat</a>
 </nav>
 
+{% endif %}
+
+{% if type == 'insurance' %}
+{% for patient in patients %}
+{{patient.user.first_name}} {{patient.user.last_name}}
+{% for doc in patient.doctor %}
+{{doc.user.first_name}} {{doc.user.last_name}}
+{% endfor %}
+{% endfor %}
 {% endif %}
 {% endblock %}

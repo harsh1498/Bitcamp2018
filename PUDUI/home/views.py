@@ -1,13 +1,28 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import SignUpForm, CreateHealthInstanceForm, CreateCommunicationPatientForm, CreateAppointment
-from .models import doctor, patient, insurance, health_instance, prescription, communication
+from .forms import SignUpForm, CreateHealthInstanceForm, CreateCommunicationPatientForm, CreateAppointment, CreateCommunicationDoctorForm
+from .models import doctor, patient, insurance, health_instance, prescription, communication,doctor_appointment
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 
+def calender(request):
+    context = {}
+    doc = doctor.objects.get(user=request.user)
+    doctor_appointments = doctor_appointment.objects.filter(doctor=doc)
+    datetime = []
+    for i in range(len(doctor_appointments)):
+        date, time = str(doctor_appointments[i].appointment_time).split(' ')
+        datetime.append((date,time))
+
+    context['datetime'] = datetime
+    return render(request, 'home/calender.html', context)
 
 def home(request):
     return render(request,'home/home.html')
+
+def view_doc_chat(request):
+    conversations = communication.objects.filter(doctor = doctor.objects.get(user = request.user))
+    return render(request,'home/alldocchats.html',{'conversations':conversations})
 
 def view_communication(request):
     conversations = communication.objects.filter(patient = patient.objects.get(user=request.user))
@@ -37,6 +52,8 @@ def index(request):
     elif len(ins) == 1:
         context['obj'] = insurance.objects.get(user=request.user)
         context['type'] = 'insurance'
+        print(patient.objects.filter(insurances=insurance.objects.get(user=request.user)))
+        context['patients'] = patient.objects.filter(insurances=insurance.objects.get(user=request.user))
         return render(request, 'home/index.html',context)
     return render(request, 'home/index.html',context)
 
@@ -52,6 +69,21 @@ def create_communication_patient(request):
             return redirect(index)
     else:
         form = CreateCommunicationPatientForm()
+
+    return render(request, 'home/createhealthinstance.html', {'form':form})
+
+def create_communication_doctor(request):
+    if request.method == 'POST':
+        form = CreateCommunicationDoctorForm(request.POST)
+        if form.is_valid():
+            comm = form.save(commit=False)
+            comm.doctor = doctor.objects.get(user=request.user)
+            comm.patient = comm.health_instance.patient
+            comm.is_patient = False
+            comm.save()
+            return redirect(index)
+    else:
+        form = CreateCommunicationDoctorForm()
 
     return render(request, 'home/createhealthinstance.html', {'form':form})
 

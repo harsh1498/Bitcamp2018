@@ -13,5 +13,8 @@ urlpatterns = [
     path('createcommunicationpatient',views.create_communication_patient, name='createcommunication'),
     path('createappointment',views.create_appointment, name='createappointment'),
     path('viewchat',views.view_communication, name='viewchat'),
+    path('viewdocchat',views.view_doc_chat, name='view_doc_chat'),
+    path('createcommunicationdoctor',views.create_communication_doctor, name='commdoc'),
+    path('calender',views.calender, name='calender'),
     path('logout',logout),
 ]

@@ -17,7 +17,6 @@ class health_attr(models.Model):
 
 class insurance(models.Model):
      user = models.OneToOneField(User,on_delete=models.CASCADE,null=False,default=0,blank=False)
-
      def __str__(self):
          return str(self.user)
 
@@ -59,7 +58,7 @@ class prescription(models.Model):
 class doctor_appointment(models.Model):
      patient = models.ForeignKey(patient,null=False,default=0,blank=False,on_delete=models.CASCADE)
      doctor = models.ForeignKey(doctor,null=False,default=0,blank=False,on_delete=models.CASCADE)
-     health_instance = models.ForeignKey(health_instance,null=False,default=0,blank=False,on_delete=models.CASCADE)
+     health_instance = models.ManyToManyField(health_instance,default=0,blank=False)
      timestamp = models.DateTimeField(auto_now=True)
      appointment_time = models.DateTimeField(default='12/12/2020 14:00')
 
