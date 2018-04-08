@@ -19,7 +19,7 @@ class SignUpForm(UserCreationForm):
 class CreateHealthInstanceForm(ModelForm):
     class Meta:
         model = health_instance
-        fields = ['common_name','health_attr','description','patient','doctor','insurance']
+        fields = ['common_name','health_attr','description','doctor','insurance']
 
 class CreateCommunicationPatientForm(ModelForm):
     class Meta:
@@ -34,4 +34,4 @@ class CreateCommunicationDoctorForm(ModelForm):
 class CreateAppointment(ModelForm):
     class Meta:
         model = doctor_appointment
-        fields = ['health_instance','doctor','patient','appointment_time']
+        fields = ['health_instance','doctor','appointment_time']
