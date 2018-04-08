@@ -98,7 +98,7 @@ def create_communication_patient(request):
     else:
         form = CreateCommunicationPatientForm()
 
-    return render(request, 'home/createcommunicationpatient.html', {'form':form})
+    return render(request, 'home/createcommunication.html', {'form':form})
 
 def create_communication_doctor(request):
     if request.method == 'POST':
