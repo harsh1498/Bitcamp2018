@@ -54,24 +54,30 @@ def index(request):
         context['type'] = 'insurance'
         context['patients'] = patient.objects.filter(insurances=insurance.objects.get(user=request.user))
         print(context['patients'])
+
+        context['patient'] = []
+        context['doctors'] = []
+        context['insurances'] = []
         context['data'] = []
+
         for pati in context['patients']:
             if pati.data_release > 0:
-                context['data'].append([pati.user.first_name,pati.user.last_name])
+                context['patient'].append([pati.user.first_name,pati.user.last_name])
             if pati.data_release > 25:
                 row = []
                 for instance in health_instance.objects.filter(patient=pati):
                     row.append([instance.doctor.user.first_name,instance.doctor.user.last_name])
-                context['data'].append(row)
+                context['doctors'].append(row)
 
             if pati.data_release > 50:
                 row = []
                 for instance in health_instance.objects.filter(patient=pati):
                     row.append([instance.insurance.user.first_name,instance.insurance.user.last_name])
-                context['data'].append(row)
+                context['insurances'].append(row)
 
-            if pati.data_release > 75:
+            if pati.data_release >= 75:
                 row = []
+                print(health_instance.objects.filter(patient=pati))
                 for instance in health_instance.objects.filter(patient=pati):
                     print([instance.common_name,instance.description,instance.timestamp])
                     row.append([instance.common_name,instance.description,instance.timestamp])

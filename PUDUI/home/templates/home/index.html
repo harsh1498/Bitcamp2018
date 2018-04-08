@@ -52,13 +52,14 @@ PUDUI HOME
 {% endif %}
 
 {% if type == 'insurance' %}
-{% for d in data %}
- {% for r in d %}
- {{r}}
- {% for j in r %}
- {{j}}
- {% endfor %}
- {% endfor %}
- {% endfor %}
+The patient:
+ {{patient}}
+The Doctors:
+ {{doctors}}
+The Insurances:
+ {{insurances}}
+The Health Records:
+ {{data}}
+
 {% endif %}
 {% endblock %}
